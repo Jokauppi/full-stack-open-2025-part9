@@ -1,3 +1,5 @@
+import getArgs from "./utils";
+
 const calculateBmi = (height: number, weight: number) => {
   const bmi = weight / height ** 2;
   if (bmi < 18.5) {
@@ -11,4 +13,10 @@ const calculateBmi = (height: number, weight: number) => {
   }
 };
 
-console.log(calculateBmi(1.75, 72));
+const args = getArgs();
+
+if (args.length != 2) {
+  console.log("Missing or too many arguments");
+} else {
+  console.log(calculateBmi(args[0] / 100, args[1]));
+}

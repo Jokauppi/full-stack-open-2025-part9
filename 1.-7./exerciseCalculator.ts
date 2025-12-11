@@ -1,3 +1,5 @@
+import getArgs from "./utils";
+
 interface Result {
   periodLength: number;
   trainingDays: number;
@@ -36,4 +38,13 @@ const calculateExercises = (hours: number[], target: number): Result => {
   };
 };
 
-console.dir(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+const args = getArgs();
+const hours = args.slice(1);
+
+if (args.length == 0) {
+  console.log("Missing arguments");
+} else if (hours.length > 0) {
+  console.dir(calculateExercises(hours, args[0]));
+} else {
+  console.log("No training days given");
+}
